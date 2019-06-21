@@ -1,0 +1,35 @@
+<div>
+    <div class="search-container">
+        <img src="https://sitejerk.com/images/back-icon-png-9.png" 
+        class="back-image" alt="" (click)="goBack()">
+         <input type="text" (change)="findbyGenre($event)" />
+    </div>
+  
+  <!-- <div *ngFor="let category of categories" class="category"> -->
+      <div  class="books">
+        <div *ngFor="let Book of books" class="book">
+            <figure>
+                <img src="{{Book.imageURL}}"
+                     alt="book image">
+                <figcaption>
+                    <div class="book-name">{{Book.name}}</div>
+                    <div class="author-name">{{Book.author}}</div>
+                </figcaption>
+            </figure>
+            <ng-template #popContent>
+                <p class="hint">Move to...</p>
+                <p class="options" (click)="changeStatus(Book,'Currently Reading')">Currently Reading</p>
+                <p class="options" (click)="changeStatus(Book,'Want to Read')">Want to Read</p>
+                <p class="options" (click)="changeStatus(Book,'Read')">Read</p>
+                <p class="options" (click)="changeStatus(Book,'None')">None</p>
+            </ng-template>
+            <div class="change-status-button" placement="left auto" popoverClass="popover-class"
+            [ngbPopover]="popContent" >
+              <div class="down-arrow" ></div>
+            </div>
+            
+        </div>
+      </div>
+     
+    <!-- </div> -->
+</div>
